@@ -12,9 +12,9 @@ namespace DemoAPI.Business
     {
         private DAEmployee _daEmployee;
 
-        public EmployeeLogic()
+        public EmployeeLogic(string connectionString)
         {
-            _daEmployee = new DAEmployee();
+            _daEmployee = new DAEmployee(connectionString);
         }
 
         public void Add(Employee employee)
