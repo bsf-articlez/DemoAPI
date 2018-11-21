@@ -2,6 +2,7 @@
 using DemoAPI.Objects;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,7 +12,8 @@ namespace DemoAPI.Controllers
 {
     public class EmployeeController : ApiController
     {
-        public EmployeeLogic _employeeLogic = new EmployeeLogic();
+        private static string _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+        private EmployeeLogic _employeeLogic = new EmployeeLogic(_connectionString);
 
         [HttpPost]
         public IHttpActionResult Add([FromBody]Employee employee)
